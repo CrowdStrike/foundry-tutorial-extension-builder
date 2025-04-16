@@ -1,0 +1,641 @@
+{
+  "components": {
+    "securitySchemes": {
+      "apiKey": {
+        "name": "x-apikey",
+        "type": "apiKey"
+      }
+    }
+  },
+  "info": {
+    "contact": {
+      "email": "matt.raible@crowdstrike.com"
+    },
+    "description": "VirusTotal domain, hash, and IP operations",
+    "title": "VirusTotal",
+    "version": ""
+  },
+  "openapi": "3.0.3",
+  "paths": {
+    "/api/v3/domains/{domain}": {
+      "get": {
+        "operationId": "domains",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Domain",
+            "required": true,
+            "schema": {
+              "title": "Domain",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "properties": {
+                        "attributes": {
+                          "properties": {
+                            "categories": {
+                              "type": "object"
+                            },
+                            "creation_date": {
+                              "type": "integer"
+                            },
+                            "favicon": {
+                              "properties": {
+                                "dhash": {
+                                  "type": "string"
+                                },
+                                "raw_md5": {
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "last_analysis_results": {
+                              "type": "object"
+                            },
+                            "last_analysis_stats": {
+                              "properties": {
+                                "harmless": {
+                                  "type": "integer"
+                                },
+                                "malicious": {
+                                  "type": "integer"
+                                },
+                                "suspicious": {
+                                  "type": "integer"
+                                },
+                                "timeout": {
+                                  "type": "integer"
+                                },
+                                "undetected": {
+                                  "type": "integer"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "last_dns_records": {
+                              "items": {
+                                "properties": {
+                                  "expire": {
+                                    "type": "integer"
+                                  },
+                                  "flag": {
+                                    "type": "integer"
+                                  },
+                                  "minimum": {
+                                    "type": "integer"
+                                  },
+                                  "priority": {
+                                    "type": "integer"
+                                  },
+                                  "refresh": {
+                                    "type": "integer"
+                                  },
+                                  "retry": {
+                                    "type": "integer"
+                                  },
+                                  "rname": {
+                                    "type": "string"
+                                  },
+                                  "serial": {
+                                    "type": "integer"
+                                  },
+                                  "tag": {
+                                    "type": "string"
+                                  },
+                                  "ttl": {
+                                    "type": "integer"
+                                  },
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "type": "string"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "last_dns_records_date": {
+                              "type": "integer"
+                            },
+                            "last_https_certificate_date": {
+                              "type": "integer"
+                            },
+                            "last_modification_date": {
+                              "type": "integer"
+                            },
+                            "last_update_date": {
+                              "type": "integer"
+                            },
+                            "popularity_ranks": {
+                              "type": "object"
+                            },
+                            "registrar": {
+                              "type": "string"
+                            },
+                            "reputation": {
+                              "type": "integer"
+                            },
+                            "total_votes": {
+                              "properties": {
+                                "harmless": {
+                                  "type": "integer"
+                                },
+                                "malicious": {
+                                  "type": "integer"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "whois": {
+                              "type": "string"
+                            },
+                            "whois_date": {
+                              "type": "integer"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-cs-operation-config": {
+          "query_terms": {
+            "domain": {
+              "request": {
+                "params": {
+                  "header": {
+                    "x-tool": "CrowdStrikeEnrichmentCards"
+                  },
+                  "query": {
+                    "relationships": "downloaded_files,resolutions,urls,downloaded_files,communicating_files,referrer_files"
+                  }
+                }
+              },
+              "value": "params.path.domain"
+            }
+          },
+          "workflow": {
+            "expose_to_workflow": true,
+            "name": "Domains",
+            "system": false,
+            "tags": [
+              "VirusTotal"
+            ]
+          }
+        }
+      }
+    },
+    "/api/v3/files/{hash}": {
+      "get": {
+        "operationId": "hashes",
+        "responses": {
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "properties": {
+                        "attributes": {
+                          "properties": {
+                            "capabilities_tags": {
+                              "type": "array"
+                            },
+                            "creation_date": {
+                              "type": "integer"
+                            },
+                            "crowdsourced_ids_results": {
+                              "items": {
+                                "properties": {
+                                  "alert_context": {
+                                    "items": {
+                                      "properties": {
+                                        "dest_ip": {
+                                          "type": "string"
+                                        },
+                                        "dest_port": {
+                                          "type": "integer"
+                                        },
+                                        "hostname": {
+                                          "type": "string"
+                                        },
+                                        "protocol": {
+                                          "type": "string"
+                                        },
+                                        "src_ip": {
+                                          "type": "string"
+                                        },
+                                        "src_port": {
+                                          "type": "integer"
+                                        },
+                                        "url": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "type": "object"
+                                    },
+                                    "type": "array"
+                                  },
+                                  "alert_severity": {
+                                    "type": "string"
+                                  },
+                                  "rule_category": {
+                                    "type": "string"
+                                  },
+                                  "rule_id": {
+                                    "type": "string"
+                                  },
+                                  "rule_msg": {
+                                    "type": "string"
+                                  },
+                                  "rule_source": {
+                                    "type": "string"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "crowdsourced_ids_stats": {
+                              "properties": {
+                                "high": {
+                                  "type": "integer"
+                                },
+                                "info": {
+                                  "type": "integer"
+                                },
+                                "low": {
+                                  "type": "integer"
+                                },
+                                "medium": {
+                                  "type": "integer"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "crowdsourced_yara_results": {
+                              "items": {
+                                "properties": {
+                                  "description": {
+                                    "type": "string"
+                                  },
+                                  "match_in_subfile": {
+                                    "type": "boolean"
+                                  },
+                                  "rule_name": {
+                                    "type": "string"
+                                  },
+                                  "ruleset_id": {
+                                    "type": "string"
+                                  },
+                                  "ruleset_name": {
+                                    "type": "string"
+                                  },
+                                  "source": {
+                                    "type": "string"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "type": "array"
+                            },
+                            "downloadable": {
+                              "type": "boolean"
+                            },
+                            "first_submission_date": {
+                              "type": "integer"
+                            },
+                            "last_analysis_date": {
+                              "type": "integer"
+                            },
+                            "last_analysis_results": {
+                              "type": "object"
+                            },
+                            "last_analysis_stats": {
+                              "type": "object"
+                            },
+                            "last_modification_date": {
+                              "type": "integer"
+                            },
+                            "last_submission_date": {
+                              "type": "integer"
+                            },
+                            "md5": {
+                              "type": "string"
+                            },
+                            "meaningful_name": {
+                              "type": "string"
+                            },
+                            "names": {
+                              "type": "array"
+                            },
+                            "reputation": {
+                              "type": "integer"
+                            },
+                            "sandbox_verdicts": {
+                              "type": "object"
+                            },
+                            "sha1": {
+                              "type": "string"
+                            },
+                            "sha256": {
+                              "type": "string"
+                            },
+                            "sigma_analysis_stats": {
+                              "type": "object"
+                            },
+                            "sigma_analysis_summary": {
+                              "type": "object"
+                            },
+                            "size": {
+                              "type": "integer"
+                            },
+                            "tags": {
+                              "type": "array"
+                            },
+                            "times_submitted": {
+                              "type": "integer"
+                            },
+                            "total_votes": {
+                              "type": "object"
+                            },
+                            "type_description": {
+                              "type": "string"
+                            },
+                            "type_extension": {
+                              "type": "string"
+                            },
+                            "type_tag": {
+                              "type": "string"
+                            },
+                            "unique_sources": {
+                              "type": "integer"
+                            },
+                            "vhash": {
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-cs-operation-config": {
+          "query_terms": {
+            "md5": {
+              "request": {
+                "params": {
+                  "header": {
+                    "x-tool": "CrowdStrikeEnrichmentCards"
+                  },
+                  "query": {
+                    "relationships": "submissions,contacted_domains,contacted_ips,contacted_urls,itw_urls,email_parents,comments,similar_files"
+                  }
+                }
+              },
+              "value": "params.path.hash"
+            },
+            "sha1": {
+              "request": {
+                "params": {
+                  "header": {
+                    "x-tool": "CrowdStrikeEnrichmentCards"
+                  },
+                  "query": {
+                    "relationships": "submissions,contacted_domains,contacted_ips,contacted_urls,itw_urls,email_parents,comments,similar_files"
+                  }
+                }
+              },
+              "value": "params.path.hash"
+            },
+            "sha256": {
+              "request": {
+                "params": {
+                  "header": {
+                    "x-tool": "CrowdStrikeEnrichmentCards"
+                  },
+                  "query": {
+                    "relationships": "submissions,contacted_domains,contacted_ips,contacted_urls,itw_urls,email_parents,comments,similar_files"
+                  }
+                }
+              },
+              "value": "params.path.hash"
+            }
+          },
+          "workflow": {
+            "expose_to_workflow": true,
+            "name": "Hashes",
+            "system": false,
+            "tags": [
+              "VirusTotal"
+            ]
+          }
+        }
+      }
+    },
+    "/api/v3/ip_addresses/{ip}": {
+      "get": {
+        "operationId": "ip-address",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "ip",
+            "required": true,
+            "schema": {
+              "title": "IP address",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "data": {
+                      "properties": {
+                        "attributes": {
+                          "properties": {
+                            "as_owner": {
+                              "type": "string"
+                            },
+                            "asn": {
+                              "type": "integer"
+                            },
+                            "continent": {
+                              "type": "string"
+                            },
+                            "country": {
+                              "type": "string"
+                            },
+                            "last_analysis_results": {
+                              "type": "object",
+                              "x-cs-schema-shim": {
+                                "patternProperties": {
+                                  "": {
+                                    "properties": {
+                                      "category": {
+                                        "type": "string"
+                                      },
+                                      "engine_name": {
+                                        "type": "string"
+                                      },
+                                      "method": {
+                                        "type": "string"
+                                      },
+                                      "result": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "type": "object"
+                                  }
+                                }
+                              }
+                            },
+                            "last_analysis_stats": {
+                              "properties": {
+                                "harmless": {
+                                  "type": "integer"
+                                },
+                                "malicious": {
+                                  "type": "integer"
+                                },
+                                "suspicious": {
+                                  "type": "integer"
+                                },
+                                "timeout": {
+                                  "type": "integer"
+                                },
+                                "undetected": {
+                                  "type": "integer"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "last_modification_date": {
+                              "type": "integer"
+                            },
+                            "network": {
+                              "type": "string"
+                            },
+                            "regional_internet_registry": {
+                              "type": "string"
+                            },
+                            "reputation": {
+                              "type": "integer"
+                            },
+                            "tags": {
+                              "items": {
+                                "type": "string"
+                              },
+                              "type": "array"
+                            },
+                            "total_votes": {
+                              "properties": {
+                                "harmless": {
+                                  "type": "integer"
+                                },
+                                "malicious": {
+                                  "type": "integer"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "whois": {
+                              "type": "string"
+                            },
+                            "whois_date": {
+                              "type": "integer"
+                            }
+                          },
+                          "type": "object"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "x-cs-operation-config": {
+          "query_terms": {
+            "ipv4": {
+              "request": {
+                "params": {
+                  "header": {
+                    "x-tool": "CrowdStrikeEnrichmentCards"
+                  },
+                  "query": {
+                    "relationships": "comments,resolutions,downloaded_files,communicating_files,referrer_files,urls,graphs"
+                  }
+                }
+              },
+              "value": "params.path.ip"
+            },
+            "ipv6": {
+              "request": {
+                "params": {
+                  "header": {
+                    "x-tool": "CrowdStrikeEnrichmentCards"
+                  },
+                  "query": {
+                    "relationships": "comments,resolutions,downloaded_files,communicating_files,referrer_files,urls,graphs"
+                  }
+                }
+              },
+              "value": "params.path.ip"
+            }
+          },
+          "workflow": {
+            "expose_to_workflow": true,
+            "name": "IPs",
+            "system": false,
+            "tags": [
+              "VirusTotal"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "apiKey": []
+    }
+  ],
+  "servers": [
+    {
+      "url": "https://www.virustotal.com"
+    }
+  ],
+  "x-cs-multi-instance": false
+}
