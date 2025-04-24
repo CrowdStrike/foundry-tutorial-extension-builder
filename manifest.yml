@@ -1,6 +1,6 @@
 name: VirusTotal Detection Enrichment
 description: Extends detection details with VirusTotal IP address report data
-logo: virustotal-logo.png
+logo: images/virustotal-logo.png
 vendor: ""
 vendor_products: []
 use_case: ""
