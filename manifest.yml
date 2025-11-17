@@ -4,45 +4,45 @@ logo: images/virustotal-logo.png
 vendor: ""
 vendor_products: []
 use_case: ""
-manifest_version: ""
+manifest_version: "2023-05-09"
 ignored: []
 ui:
-  homepage: ""
-  extensions:
-    - name: IP Address Enrichment by VirusTotal
-      description: Adds VirusTotal IP info report data to Next-Gen SIEM detection details.
-      path: ui/extensions/IP Address Enrichment by VirusTotal/IP_Address_Enrichment_by_VirusTotal.json
-      entrypoint: ""
-      sockets:
-        - activity.detections.details
-      content_security_policy:
-        connect-src: []
-        style-src: []
-        style-src-elem: []
-        script-src: []
-        form-action: []
-        img-src: []
-        media-src: []
-        object-src: []
-      permissions: []
-      is_ui_builder: true
-  pages: {}
-  dashboards: {}
-  navigation: {}
+    homepage: ""
+    extensions:
+        - name: IP Address Enrichment by VirusTotal
+          description: Adds VirusTotal IP info report data to Next-Gen SIEM detection details.
+          path: ui/extensions/IP Address Enrichment by VirusTotal/IP_Address_Enrichment_by_VirusTotal.json
+          entrypoint: ""
+          sockets:
+            - activity.detections.details
+          content_security_policy:
+            connect-src: []
+            style-src: []
+            style-src-elem: []
+            script-src: []
+            form-action: []
+            img-src: []
+            media-src: []
+            object-src: []
+          permissions: []
+          is_ui_builder: true
+    pages: {}
+    dashboards: {}
+    navigation: {}
 api_integrations:
-  - name: VirusTotal
-    description: ""
-    path: api-integrations/VirusTotal.json
+    - name: VirusTotal
+      description: ""
+      path: api-integrations/VirusTotal.json
 rtr_scripts: []
 collections: []
 auth:
-  scopes: []
-  permissions: {}
-  roles: []
+    scopes: []
+    permissions: {}
+    roles: []
 functions: []
 workflows: []
 parsers: []
 logscale:
-  saved_searches: []
+    saved_searches: []
 lookup_files: []
 docs: {}
