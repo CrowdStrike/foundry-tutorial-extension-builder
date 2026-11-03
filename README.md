@@ -8,7 +8,7 @@
 > [!IMPORTANT]  
 > To view this tutorial and import the app, you need access to the Falcon console.
 
-This code is the result of doing the Falcon Foundry [Create a Detection Enrichment App with Foundry Extension Builder](https://falcon.crowdstrike.com/documentation/page/gbf78cc9/create-a-detection-enrichment-app-with-foundry-extension-builder) tutorial.
+This code is the result of doing the Falcon Foundry [Create a Detection Enrichment App with Foundry Extension Builder](https://docs.crowdstrike.com/access?ft:originId=gbf78cc9) tutorial.
 
 ## Prerequisites
 
