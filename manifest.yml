@@ -10,7 +10,7 @@ ui:
     homepage: ""
     extensions:
         - name: IP Address Enrichment by VirusTotal
-          description: Adds VirusTotal IP info report data to Next-Gen SIEM detection details.
+          description: Adds VirusTotal IP info report data to Next-Gen SIEM detection details
           path: ui/extensions/IP Address Enrichment by VirusTotal/IP_Address_Enrichment_by_VirusTotal.json
           entrypoint: ""
           sockets:

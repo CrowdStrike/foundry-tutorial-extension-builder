@@ -23,7 +23,7 @@
         "parameters": [
           {
             "in": "path",
-            "name": "Domain",
+            "name": "domain",
             "required": true,
             "schema": {
               "title": "Domain",
@@ -173,7 +173,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": ""
           }
         },
         "x-cs-operation-config": {
@@ -206,6 +207,17 @@
     "/api/v3/files/{hash}": {
       "get": {
         "operationId": "hashes",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "hash",
+            "required": true,
+            "schema": {
+              "title": "File Hash",
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "default": {
             "content": {
@@ -402,7 +414,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": ""
           }
         },
         "x-cs-operation-config": {
@@ -583,7 +596,8 @@
                   "type": "object"
                 }
               }
-            }
+            },
+            "description": ""
           }
         },
         "x-cs-operation-config": {
